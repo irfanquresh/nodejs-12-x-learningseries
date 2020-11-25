@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const Subscription = require("../models/subscription");
 const Plan = require("../models/plan");
+const ValidationError = require("../errors/validation-error");
 
 ("use strict");
 
@@ -47,7 +48,10 @@ module.exports = function ValidationMiddleware(model, scope) {
   return (req, res, next) => {
     const validationResult = validate(model, req.body, scope);
     if (validationResult.error) {
-      throw new Error(validationResult.error.details[0].message);
+      throw new ValidationError(
+        validationResult.error.details[0].message,
+        model
+      );
     } else {
       next();
     }
