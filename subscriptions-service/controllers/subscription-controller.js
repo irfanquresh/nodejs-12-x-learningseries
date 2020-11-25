@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const asyncWrapper = require("../util/async-wrapper").AsyncWrapper;
+const asyncWrapper = require("../../util/async-wrapper").AsyncWrapper;
 const SubscriptionService = require("../services/subscription-service");
 
 const subscriptionServices = new SubscriptionService();

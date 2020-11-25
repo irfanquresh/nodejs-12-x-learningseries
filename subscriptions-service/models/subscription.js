@@ -17,11 +17,12 @@ module.exports = (sequelize, DataTypes) => {
   Subscription.init(
     {
       planId: DataTypes.INTEGER,
-      couan: DataTypes.STRING,
+      coupan: DataTypes.STRING,
       cardNumber: DataTypes.STRING,
       holderName: DataTypes.STRING,
       expirationDate: DataTypes.STRING,
       cvv: DataTypes.STRING,
+      userId: DataTypes.INTEGER,
     },
     {
       sequelize,
