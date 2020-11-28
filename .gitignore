@@ -1,4 +1,4 @@
 /node_modules
 /.env
 /hello_world.txt
-/ecosystem.config
+/ecosystem.config.js
