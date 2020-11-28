@@ -1,3 +1,8 @@
+const AMQP_CONNECTION_STRING =
+  "amqps://vqqammks:GNcqWHRHZviXYlOSbVQDN7OEoqbbSo-0@lionfish.rmq.cloudamqp.com/vqqammks";
+const AMQP_CHANNEL_NAME = "PAYMENTS_GATEWAY";
+const AMQP_QUEUE_NAME = "PAYMENT_QUEUE";
+
 module.exports = {
   apps: [
     {
@@ -22,6 +27,9 @@ module.exports = {
       script: "./subscriptions-service/index.js",
       watch: true,
       env: {
+        AMQP_CONNECTION_STRING: AMQP_CONNECTION_STRING,
+        AMQP_CHANNEL_NAME: AMQP_CHANNEL_NAME,
+        AMQP_QUEUE_NAME: AMQP_QUEUE_NAME,
         NODE_ENV: "development",
         MYSQL_USER: "root",
         MYSQL_PASS: "123456789",
@@ -34,5 +42,16 @@ module.exports = {
         NODE_ENV: "production",
       },
     },
+    // {
+    //   name: "payments-service",
+    //   script: "./payments-service/index.js",
+    //   watch: true,
+    //   env: {
+    //     AMQP_CONNECTION_STRING,
+    //     AMQP_CHANNEL_NAME,
+    //     AMQP_QUEUE_NAME,
+    //   },
+    //   env_production: {},
+    // },
   ],
 };

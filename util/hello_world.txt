@@ -3,3 +3,4 @@ sequelize model:generate --name Plan --attributes name:string,price:float,type:i
 docker run --name subscription-as-a-service -e MYSQL_ROOT_PASSWORD=123456789 -p 6606:3306 -d mysql:5.7
 dbcb23a92c902758c1d9673ce6adeaf5732d220e670edfbb283e5b95fb8c2199
 docker run --name plan-as-a-service -e MYSQL_ROOT_PASSWORD=123456789 -p 6607:3306 -d mysql:5.7
+docker run --name user-as-a-service -e MYSQL_ROOT_PASSWORD=123456789 -p 6608:3306 -d mysql:5.7
