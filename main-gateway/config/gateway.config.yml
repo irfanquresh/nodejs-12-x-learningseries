@@ -1,6 +1,9 @@
 http:
   port: 8080
 apiEndpoints:
+  auth-service:
+    host: "*"
+    paths: ["/api/auth/*", "/api/auth"]
   plans-service:
     host: "*"
     paths: ["/api/plans/*", "/api/plans"]
@@ -8,6 +11,8 @@ apiEndpoints:
     host: "*"
     paths: ["/api/subscriptions/*", "/api/subscriptions"]
 serviceEndpoints:
+  auth-service-endpoint:
+    url: "http://localhost:3000/"
   plans-service-endpoint:
     url: "http://localhost:3001/"
   subscriptions-service-endpoint:
@@ -22,6 +27,17 @@ policies:
   - proxy
   # - rate-limit
 pipelines:
+  auth-service-pipeline:
+    apiEndpoints:
+      - auth-service
+    policies:
+      # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+      # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: auth-service-endpoint
+              changeOrigin: true # localhost:8080 -> localhost:3000
+              stripPath: true # localhost:8080/api/plans -> localhost:3000(/api/auth -> removed)
   plans-service-pipeline:
     apiEndpoints:
       - plans-service

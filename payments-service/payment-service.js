@@ -10,7 +10,7 @@ module.exports = class PaymentsService {
   }
 
   async init() {
-    console.log(`Initializing RabbitMQ connection to ${this.connectionString}`);
+    // console.log(`Initializing RabbitMQ connection to ${this.connectionString}`);
     this.connection = await amqplib.connect(this.connectionString);
     this.channel = await this.connection.createChannel(this.channelName);
     await this.channel.assertQueue(this.queueName);

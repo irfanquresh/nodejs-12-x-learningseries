@@ -7,18 +7,17 @@ const AMQPService = require("./amqp-service");
 // const AMQP_CHANNEL_NAME = process.env.AMQP_CHANNEL_NAME;
 // const AMQP_QUEUE_NAME = process.env.AMQP_QUEUE_NAME;
 
-const AMQP_CONNECTION_STRING =
-  "amqps://vqqammks:GNcqWHRHZviXYlOSbVQDN7OEoqbbSo-0@lionfish.rmq.cloudamqp.com/vqqammks";
-const AMQP_CHANNEL_NAME = "PAYMENTS_GATEWAY";
-const AMQP_QUEUE_NAME = "PAYMENT_QUEUE";
-
+// const AMQP_CONNECTION_STRING =
+//   "amqps://vqqammks:GNcqWHRHZviXYlOSbVQDN7OEoqbbSo-0@lionfish.rmq.cloudamqp.com/vqqammks";
+// const AMQP_CHANNEL_NAME = "PAYMENTS_GATEWAY";
+// const AMQP_QUEUE_NAME = "PAYMENT_QUEUE";
 
 module.exports = class SubscriptionService {
   constructor() {
     this.amqpService = new AMQPService(
-      AMQP_CONNECTION_STRING,
-      AMQP_CHANNEL_NAME,
-      AMQP_QUEUE_NAME
+      process.env.AMQP_CONNECTION_STRING,
+      process.env.AMQP_CHANNEL_NAME,
+      process.env.AMQP_QUEUE_NAME
     );
   }
   async findAll(userId) {

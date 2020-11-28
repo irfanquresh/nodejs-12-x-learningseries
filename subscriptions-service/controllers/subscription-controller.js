@@ -1,8 +1,11 @@
 const router = require("express").Router();
 const asyncWrapper = require("../../util/async-wrapper").AsyncWrapper;
 const SubscriptionService = require("../services/subscription-service");
+const ProtectedRoute = require("../middleware/protected-route");
 
 const subscriptionServices = new SubscriptionService();
+
+router.use(ProtectedRoute());
 
 // api/subscriptions
 router.get(
